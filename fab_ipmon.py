@@ -4,7 +4,7 @@ from fabric.api import *
 
 #@env.gateway = 'username@IPofgatewayHost'
 
-#env.hosts = ['ip', 'ip']
+#env.hosts = ['ip', 'ip', 'ip']
 
 
 
