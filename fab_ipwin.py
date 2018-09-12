@@ -24,5 +24,6 @@ def ipwin_restart():
                    "Stop-Service mongodb \n"
                    "Start-Service ipwin \n"
                    "Start-Service mongodb \n"
+                   "Get-Service ipwin \n"
                    "exit \n"
                   )
