@@ -17,8 +17,8 @@ def ipwin_status():
                   )
 
 def ipwin_restart():
-        env.user = 'ipwinpsr'
-        env.password = '1pw!nPSR'
+        env.user = 'user'
+        env.password = 'password'
         open_shell(
                    "Stop-Service ipwin \n"
                    "Stop-Service mongodb \n"
