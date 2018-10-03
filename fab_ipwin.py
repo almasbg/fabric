@@ -25,16 +25,16 @@ def file(**kwargs):
 
 
 def ipwin_status():
-        env.user = 'user'
-        env.password = 'password'
+        #env.user = 'user'
+        #env.password = 'password'
         open_shell("Get-Service ipwin \n"
                    "Get-Service mongodb \n"
                    "exit \n"
                   )
 
 def ipwin_restart():
-        env.user = 'user'
-        env.password = 'password'
+        #env.user = 'user'
+        #env.password = 'password'
         open_shell(
                    "Stop-Service ipwin \n"
                    "Stop-Service mongodb \n"
