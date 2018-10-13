@@ -43,3 +43,10 @@ def ipwin_restart():
                    "Get-Service ipwin \n"
                    "exit \n"
                   )
+        
+def ipwin_memory():
+        #env.user = 'user'
+        #env.password = 'password'
+        open_shell("systeminfo |findstr /C:'Physical Memory' \n"
+                   "exit \n"
+                  )
