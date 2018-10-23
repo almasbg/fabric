@@ -1,0 +1,30 @@
+class Service(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def start(self):
+        sudo('service %s start' % self.name)
+
+    def stop(self):
+        sudo('service %s stop' % self.name)
+
+    def restart(self):
+        sudo('service %s restart' % self.name)
+
+    def get_methods(self):
+        return [self.start, self.stop, self.restart]
+
+def create_tasks(name, namespace):
+
+    service = Service(name)
+    for f in service.get_methods():
+        fname = f.__name__
+        # task description
+        f.__func__.__doc__ = 'service %s %s' % (name, fname)
+        # task name
+        task_name = '%s_%s' % (name, fname)
+        # call task decorator as function to generate WrappedCallableTask
+        wrapper = task(name=task_name)
+        rand = '%d' % (time.time() * 100000)
+        namespace['task_%s_%s' % (task_name, rand)] = wrapper(f)
