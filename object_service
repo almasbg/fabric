@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+from getpass import getpass
+from fabric.api import *
+import sys
+import os
+
+env.password = getpass('Enter the password for: ')
+env.sudo_password = env.password
+list = []
+
+print(file)
+# file function needs to be added before execution any other tasks for multiple host list in file hosts
+# how to use this script: fab -f fab_ipmon_dev.py file:name=hosts ipmon_status
+def file(**kwargs):
+    for key, value in kwargs.iteritems():
+        hosts = value
+    with open(hosts, "r") as file:
+        for line in file:
+            list.append(line)
+        env.hosts = list;
+
+class Service(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def start(self):
+        sudo('service %s start' % self.name)
+
+    def stop(self):
+        sudo('service %s stop' % self.name)
+
+    def restart(self):
+        sudo('systemctl stop %s' % self.name)
+
+    def get_methods(self):
+        return [self.start, self.stop, self.restart]
+
+
+def restart():
+    service = Service("ntp");
+    service.restart()
