@@ -21,11 +21,11 @@ def file(**kwargs):
                         list.append(line)
                 env.hosts = list;
 
-def ipmon_restart():
+def ipmonx_restart():
         sudo("/etc/init.d/IPmonX restart")
 
-def ipmon_status():
-        sudo('sudo /etc/init.d/IPmon status')
+def ipmon_restart():
+        sudo('/etc/init.d/IPmon restart')
 
 def ipmon_disk():
         #env.user = 'user'
