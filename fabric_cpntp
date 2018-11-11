@@ -20,6 +20,11 @@ def file(**kwargs):
                 for line in file:
                         list.append(line)
                 env.hosts = list;
+                
+def log(msg):
+        logfile=open("error.list", "a+")
+        logfile.write(msg + "\n")
+        logfile.close()
 
 def ipmon_restart():
         sudo("/etc/init.d/IPmonX restart")
@@ -49,7 +54,11 @@ def cp_ntp():
           log('bad host %s::%s'%(env.host,str(e)))
 
 
-def log(msg):
-        logfile=open("error.list", "a+")
-        logfile.write(msg + "\n")
-        logfile.close()
+def ntp():
+  with settings(warn_only=True):
+        try:
+          sudo("/etc/init.d/ntpd stop && ntpdate -d  ntp.svc.ipsoft.com && /etc/init.d/ntpd start")
+        except Exception, e:
+          log('bad host %s::%s'%(env.host,str(e)))
+        
+        
