@@ -28,6 +28,9 @@ def log(msg):
 
 def ipmon_restart():
         sudo("/etc/init.d/IPmonX restart")
+        
+def ipmonx_restart():
+        sudo("/etc/init.d/IPmonX restart")
 
 def ipmon_status():
         sudo('sudo /etc/init.d/IPmon status')
